@@ -1,0 +1,6 @@
+.asideTop {
+  background: var(--admin-color-dark);
+  padding: 10px;
+  display: block;
+  height: var(--admin-top-height);
+}

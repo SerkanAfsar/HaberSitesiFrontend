@@ -1,0 +1,22 @@
+.menuWrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  flex-direction: column;
+}
+.menuWrapper .item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 10px;
+  color: var(--color-white);
+  width: 100%;
+  gap: 10px;
+  font-size: 14px;
+}
+.menuWrapper .item svg {
+  font-size: 20px;
+  transition: all 0.4s ease-in-out;
+}
