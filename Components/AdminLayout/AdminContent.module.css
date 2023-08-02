@@ -5,12 +5,3 @@
   background: var(--admin-content-bg-color);
   height: calc(100% - var(--admin-top-height));
 }
-.adminContent .innerContent {
-  margin: 20px;
-  position: relative;
-  border-radius: 3px;
-  background: #fff;
-  margin-bottom: 20px;
-  width: 100%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-}
