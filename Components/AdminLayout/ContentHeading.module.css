@@ -1,0 +1,10 @@
+.contentHeadingWrapper {
+  position: sticky;
+  position: -webkit-sticky;
+  padding: 17px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  display: block;
+  width: 100%;
+  padding: 15px 10px;
+}

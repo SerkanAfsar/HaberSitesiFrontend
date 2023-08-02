@@ -1,6 +1,30 @@
 .asideTop {
   background: var(--admin-color-dark);
   padding: 10px;
-  display: block;
   height: var(--admin-top-height);
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0px;
+  left: 0px;
+  z-index: 5;
+}
+.asideTop.active {
+  justify-content: center;
+}
+.asideTop span {
+  white-space: nowrap;
+}
+.asideTop.active span {
+  display: none;
+}
+
+.asideTop svg {
+  font-size: 25px;
+}
+.asideTop > div {
+  cursor: pointer;
 }

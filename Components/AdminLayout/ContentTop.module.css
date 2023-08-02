@@ -1,0 +1,16 @@
+.contentTop {
+  position: sticky;
+  position: -webkit-sticky;
+  height: var(--admin-top-height);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  width: 100%;
+  background: var(--admin-color-dark);
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  z-index: 10;
+}

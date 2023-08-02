@@ -5,4 +5,5 @@
 .wrapper .content {
   flex: 1;
   background: var(--color-white);
+  position: relative;
 }
