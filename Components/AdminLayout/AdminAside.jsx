@@ -1,5 +1,5 @@
-import { useState } from "react";
-import styles from "./AdminAside.module.css";
+"use client";
+import styles from "./AdminAside.module.scss";
 export default function AdminAside({ children, active }) {
   return (
     <div

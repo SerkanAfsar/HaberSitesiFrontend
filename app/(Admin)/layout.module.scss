@@ -1,0 +1,10 @@
+.wrapper {
+  display: flex;
+  height: 100%;
+
+  .content {
+    flex: 1;
+    background: $colorWhite;
+    position: relative;
+  }
+}

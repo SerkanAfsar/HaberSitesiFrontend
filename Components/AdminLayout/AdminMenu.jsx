@@ -1,7 +1,7 @@
-import styles from "./AdminMenu.module.css";
+"use client";
+import styles from "./AdminMenu.module.scss";
 import { AdminCategoryList } from "@/Utils/AdminCategories";
 import Link from "next/link";
-
 export default function AdminMenu({ active }) {
   return (
     <div className={styles.menuWrapper}>

@@ -1,4 +1,5 @@
-import styles from "./AsideTop.module.css";
+"use client";
+import styles from "./AsideTop.module.scss";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { VscExpandAll } from "react-icons/vsc";
 export default function AsideTop({ active, setActive }) {

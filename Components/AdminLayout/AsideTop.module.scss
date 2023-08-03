@@ -1,0 +1,29 @@
+.asideTop {
+  background: $adminColorDark;
+  padding: 10px;
+  height: $adminTopHeight;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0px;
+  left: 0px;
+  z-index: 5;
+  &.active {
+    justify-content: center;
+    span {
+      display: none;
+    }
+  }
+  span {
+    white-space: nowrap;
+  }
+  svg {
+    font-size: 25px;
+  }
+  > div {
+    cursor: pointer;
+  }
+}

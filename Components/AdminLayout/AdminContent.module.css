@@ -1,7 +1,0 @@
-.adminContent {
-  width: 100%;
-  display: block;
-  overflow: auto;
-  background: var(--admin-content-bg-color);
-  height: calc(100% - var(--admin-top-height));
-}

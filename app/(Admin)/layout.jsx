@@ -1,6 +1,6 @@
 "use client";
 import AdminContent from "@/Components/AdminLayout/AdminContent";
-import styles from "./layout.module.css";
+import styles from "./layout.module.scss";
 import AdminAside from "@/Components/AdminLayout/AdminAside";
 import AdminMenu from "@/Components/AdminLayout/AdminMenu";
 import AsideTop from "@/Components/AdminLayout/AsideTop";

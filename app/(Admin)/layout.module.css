@@ -1,9 +1,0 @@
-.wrapper {
-  display: flex;
-  height: 100%;
-}
-.wrapper .content {
-  flex: 1;
-  background: var(--color-white);
-  position: relative;
-}

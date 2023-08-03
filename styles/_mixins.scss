@@ -1,0 +1,32 @@
+@import "variables";
+
+@mixin xs-size {
+  @media all and (max-width: map-get($grid-breakpoints,"xs")) {
+    @content;
+  }
+}
+@mixin sm-size {
+  @media all and (max-width: map-get($grid-breakpoints,"sm")) {
+    @content;
+  }
+}
+@mixin medium-size {
+  @media all and (max-width: map-get($grid-breakpoints,"md")) {
+    @content;
+  }
+}
+@mixin large-size {
+  @media all and (max-width: map-get($grid-breakpoints,"lg")) {
+    @content;
+  }
+}
+@mixin xl-size {
+  @media all and (max-width: map-get($grid-breakpoints,"xl")) {
+    @content;
+  }
+}
+@mixin xxl-size {
+  @media all and (min-width: map-get($grid-breakpoints,"xxl")) {
+    @content;
+  }
+}
