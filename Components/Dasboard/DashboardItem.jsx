@@ -1,4 +1,10 @@
 import styles from "./DashboardItem.module.scss";
-export default function DashboardItem() {
-  return <div className={styles.item}>Deneme 1</div>;
+import Link from "next/link";
+export default function DashboardItem({ item }) {
+  return (
+    <Link className={styles.item} href={item.url || "#"}>
+      <span>{item.icon}</span>
+      <span>{item.title}</span>
+    </Link>
+  );
 }
