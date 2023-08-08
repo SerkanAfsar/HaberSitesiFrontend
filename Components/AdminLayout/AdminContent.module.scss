@@ -1,7 +1,6 @@
 .adminContent {
   width: 100%;
   display: block;
-  overflow: auto;
   background: $adminContentBgColor;
-  height: calc(100% - var($adminTopHeight));
+  height: calc(100% - $adminTopHeight);
 }

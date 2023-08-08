@@ -1,11 +1,11 @@
 .wrapper {
   display: flex;
   align-items: stretch;
-  min-height: inherit;
 
   .content {
     flex: 1;
     background: $colorWhite;
     position: relative;
+    display: block;
   }
 }

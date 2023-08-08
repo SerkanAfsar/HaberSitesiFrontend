@@ -1,12 +1,11 @@
 import ContentHeading from "@/Components/AdminLayout/ContentHeading";
 import AdminInnerContent from "@/Components/AdminLayout/AdminInnerContent";
-import AdminCategoryContainer from "@/Containers/AdminCategory";
-export default function AddCategory() {
+export default function UpdateCategory({ params }) {
   return (
     <>
-      <ContentHeading title="HABER PORTAL KATEGORİ EKLE" />
+      <ContentHeading title="HABER PORTAL KATEGORİ GÜNCELLE" />
       <AdminInnerContent>
-        <AdminCategoryContainer />
+        <h1>Deneme </h1>
       </AdminInnerContent>
     </>
   );

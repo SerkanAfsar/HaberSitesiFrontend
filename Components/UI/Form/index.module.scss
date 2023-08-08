@@ -1,0 +1,17 @@
+.form {
+  .submitArea {
+    display: block;
+    margin-bottom: 10px;
+    text-align: right;
+    button[type="submit"] {
+      padding: 10px 20px;
+      background: $adminColorBlue;
+      color: $colorWhite;
+      font-size: 14px;
+      outline: none;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}

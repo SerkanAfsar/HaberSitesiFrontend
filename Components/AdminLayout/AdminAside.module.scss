@@ -4,11 +4,17 @@
   flex-shrink: 0;
   transition: all 0.4s ease-in-out;
   color: white;
+  position: sticky;
+  position: -webkit-sticky;
+  bottom: 0px;
+  top: 0px;
+  left: 0px;
   overscroll-behavior: contain;
-  overflow-y: auto;
-  overflow-x: hidden;
-  position: relative;
-
+  height: 100vh;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   &.active {
     width: 60px;
   }
