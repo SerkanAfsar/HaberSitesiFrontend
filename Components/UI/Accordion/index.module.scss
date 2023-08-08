@@ -1,0 +1,35 @@
+.accordion {
+  display: block;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  &_header {
+    @include flexItem;
+    text-align: left;
+    padding: 10px;
+    color: #000;
+    font-weight: bold;
+    background: #ddd;
+    position: relative;
+    cursor: pointer;
+    &:after {
+      content: "\276F";
+      transition: all 0.4s ease-in-out;
+      right: 15px;
+    }
+    &.active {
+      &:after {
+        transform: rotate(90deg);
+      }
+    }
+  }
+  &_content {
+    display: none;
+    padding: 10px;
+    border-radius: 10px;
+    min-height: 150px;
+    &.active {
+      display: block;
+    }
+  }
+}

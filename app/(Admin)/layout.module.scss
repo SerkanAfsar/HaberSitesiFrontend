@@ -1,6 +1,7 @@
 .wrapper {
   display: flex;
-  height: 100%;
+  align-items: stretch;
+  min-height: inherit;
 
   .content {
     flex: 1;

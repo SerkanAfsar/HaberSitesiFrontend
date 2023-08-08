@@ -30,3 +30,15 @@
     @content;
   }
 }
+@mixin absoluteCenter {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  transform: translate(-50%, -50%);
+}
+@mixin flexItem($direction: row, $content: space-between, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $content;
+  align-items: $align;
+}
