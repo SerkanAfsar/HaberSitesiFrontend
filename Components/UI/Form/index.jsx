@@ -6,7 +6,6 @@ import InputText from "../InputText";
 const Form = ({ handleSubmit, formElements = null, type = "add" }) => {
   return (
     <form
-      autoComplete={false}
       onSubmit={async (e) => await handleSubmit(e)}
       className={`${styles.form}`}
     >

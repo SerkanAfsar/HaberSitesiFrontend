@@ -1,5 +1,5 @@
-import AdminInnerContent from "@/Components/AdminLayout/AdminInnerContent";
-import ContentHeading from "@/Components/AdminLayout/ContentHeading";
+import AdminInnerContent from "@/Components/AdminLayout/AdminContent/AdminInnerContent";
+import ContentHeading from "@/Components/AdminLayout/AdminContent/ContentHeading";
 import DashboardContainer from "@/Containers/Dashboard";
 
 export default function Dashboard() {
