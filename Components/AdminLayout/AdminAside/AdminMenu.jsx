@@ -13,7 +13,7 @@ export default function AdminMenu({ active }) {
           key={index}
           href={item.url}
         >
-          {item.icon}{" "}
+          {item.icon}
           <span style={{ animationDuration: `${(index + 1) / 3}s` }}>
             {item.title}
           </span>
