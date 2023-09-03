@@ -37,4 +37,14 @@ export const AdminCategoryList = [
     url: "/Admin/News",
     icon: <BsNewspaper />,
   },
+  {
+    title: "Rol Ekle",
+    url: "/Admin/AddRole",
+    icon: <AiOutlineFileAdd />,
+  },
+  {
+    title: "Rol Listesi",
+    url: "/Admin/Roles",
+    icon: <BsNewspaper />,
+  },
 ];

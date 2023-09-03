@@ -3,7 +3,12 @@ import { memo } from "react";
 import styles from "./index.module.scss";
 import InputText from "../InputText";
 
-const Form = ({ handleSubmit, formElements = null, type = "add" }) => {
+const Form = ({
+  handleSubmit,
+  subItems = null,
+  formElements = null,
+  type = "add",
+}) => {
   return (
     <form
       onSubmit={async (e) => await handleSubmit(e)}
@@ -25,6 +30,7 @@ const Form = ({ handleSubmit, formElements = null, type = "add" }) => {
             return <InputText key={value} {...formElements[key]} />;
         }
       })}
+      {subItems && subItems}
       <div className={styles.submitArea}>
         <button type="submit">{type == "add" ? "KAYDET" : "GÜNCELLE"}</button>
       </div>
