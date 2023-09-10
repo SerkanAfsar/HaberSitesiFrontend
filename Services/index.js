@@ -1,4 +1,5 @@
 export * from "./Category.Service";
+export * from "./Roles.Service";
 const https = require("https");
 const httpsAgent = new https.Agent({
   rejectUnauthorized: false,
@@ -25,7 +26,6 @@ export const BaseService = async ({
       method: method || "GET",
       body: body ? JSON.stringify(body) : null,
     });
-
     const result = await response.json();
     return result;
   } catch (err) {

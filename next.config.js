@@ -1,15 +1,30 @@
-module.exports = (phase, { defaultConfig }) => {
-  if ("sassOptions" in defaultConfig) {
-    defaultConfig["sassOptions"] = {
-      includePaths: ["./app", "./Components", "./Containers"],
-      prependData: `@import "~@styles/_custom.scss";`,
-    };
-  }
-  if ("env" in defaultConfig) {
-    defaultConfig["env"] = {
-      API_URL: process.env.API_URL,
-    };
-  }
-
-  return defaultConfig;
+const path = require("path");
+const nextConfig = {
+  experimental: {
+    appDir: true,
+  },
+  env: {
+    API_URL: process.env.API_URL,
+  },
+  sassOptions: {
+    includePaths: [
+      path.join(__dirname, "styles"),
+      path.join(__dirname, "Components"),
+      path.join(__dirname, "app"),
+      path.join(__dirname, "Containers"),
+    ],
+    additionalData: `@import "@/styles/custom.scss";`,
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "www.tailorbrands.com",
+        port: "",
+        pathname: "/wp-content/**",
+      },
+    ],
+  },
 };
+
+module.exports = nextConfig;

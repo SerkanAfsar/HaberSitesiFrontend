@@ -1,14 +1,20 @@
-import RolesContainer from "@/Containers/Roles";
 import ContentHeading from "@/Components/AdminLayout/AdminContent/ContentHeading";
 import AdminInnerContent from "@/Components/AdminLayout/AdminContent/AdminInnerContent";
+import { GetAllRolesService } from "@/Services";
+import RoleListContainer from "@/Containers/Roles/RolesListContainer";
 
-export default function Roles() {
-  const roles = ["deneme 1", "deneme 2", "deneme 3"];
+export const dynamic = "force-dynamic";
+
+export default async function Roles() {
+  const result = await GetAllRolesService();
+  if (!result.success && result.statusCode == 400) {
+    throw new Error(result?.errorList[0]);
+  }
   return (
     <>
-      <ContentHeading title="ROL YÖNETİMİ" />
+      <ContentHeading title="ROL LİSTESİ" />
       <AdminInnerContent>
-        <RolesContainer rolesList={roles} />
+        <RoleListContainer roleList={result.entities} />
       </AdminInnerContent>
     </>
   );

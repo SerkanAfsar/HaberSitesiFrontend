@@ -4,8 +4,11 @@ import Form from "@/Components/UI/Form";
 import useUIFormBody from "@/Hooks/useUIFormBody";
 import { CreateRoleService } from "@/Services/Roles.Service";
 import FormItemTypes from "@/Utils/FormItemTypes";
+import { CrudTypes, ToastResult } from "@/Utils/helpers";
 import { useState } from "react";
-export default function RolesContainer({ roleResult }) {
+import { useRouter } from "next/navigation";
+export default function AddUpdateRoleContainer({ roleResult }) {
+  const router = useRouter();
   const { body, data } = useUIFormBody({
     roleName: {
       name: "roleName",
@@ -52,6 +55,11 @@ export default function RolesContainer({ roleResult }) {
     const result = await CreateRoleService({
       body: { ...data, permissionList },
     });
+    const toastResult = ToastResult({ result, type: CrudTypes.CREATE });
+    if (!toastResult) {
+      return;
+    }
+    return router.push("/Admin/Roles");
   };
 
   return (

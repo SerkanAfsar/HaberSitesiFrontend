@@ -39,7 +39,7 @@ export default function SingleModule({ item, setFormsList }) {
         updateItem(e, "Create")
       );
       return () => {
-        createRef.current.removeEventListener("click", (e) =>
+        createRef?.current?.removeEventListener("click", (e) =>
           updateItem(e, "Create")
         );
       };
@@ -50,7 +50,7 @@ export default function SingleModule({ item, setFormsList }) {
     if (readRef && readRef.current) {
       readRef.current.addEventListener("click", (e) => updateItem(e, "Read"));
       return () => {
-        readRef.current.removeEventListener("click", (e) =>
+        readRef?.current?.removeEventListener("click", (e) =>
           updateItem(e, "Read")
         );
       };
@@ -59,14 +59,14 @@ export default function SingleModule({ item, setFormsList }) {
 
   useEffect(() => {
     if (updateRef && updateRef.current) {
-      updateRef.current.addEventListener("click", (e) =>
+      updateRef?.current?.addEventListener("click", (e) =>
         updateItem(e, "Update")
       );
-      return () => {
-        updateRef.current.removeEventListener("click", (e) =>
-          updateItem(e, "Update")
-        );
-      };
+      // return () => {
+      //   updateRef.current.removeEventListener("click", (e) =>
+      //     updateItem(e, "Update")
+      //   );
+      // };
     }
   }, [updateRef]);
 
@@ -76,7 +76,7 @@ export default function SingleModule({ item, setFormsList }) {
         updateItem(e, "Delete")
       );
       return () => {
-        deleteRef.current.removeEventListener("click", (e) =>
+        deleteRef?.current?.removeEventListener("click", (e) =>
           updateItem(e, "Delete")
         );
       };

@@ -1,13 +1,12 @@
 import ContentHeading from "@/Components/AdminLayout/AdminContent/ContentHeading";
 import AdminInnerContent from "@/Components/AdminLayout/AdminContent/AdminInnerContent";
-import AddUpdateRoleContainer from "@/Containers/Roles/AddUpdateRoleContainer";
 
-export default function AddRole() {
+export default function NotFoundRole() {
   return (
     <>
-      <ContentHeading title="ROL EKLE" />
+      <ContentHeading title="ROL İŞLEMLERİ" />
       <AdminInnerContent>
-        <AddUpdateRoleContainer roleResult={null} />
+        <h5>Aradığınız Rol Bulunamadı</h5>
       </AdminInnerContent>
     </>
   );
