@@ -1,11 +1,17 @@
 import { toast } from "react-toastify";
 export function ToastResult({ result, type = CrudTypes.CREATE }) {
   if (!result.success) {
-    result.errorList.forEach((err, index) => {
+    if (result.errorList) {
+      result?.errorList?.forEach((err, index) => {
+        setTimeout(() => {
+          toast.error(err, { position: "top-right" });
+        }, index * 100);
+      });
+    } else {
       setTimeout(() => {
-        toast.error(err, { position: "top-right" });
-      }, index * 100);
-    });
+        toast.error(result, { position: "top-right" });
+      }, 100);
+    }
     return false;
   } else {
     switch (type) {

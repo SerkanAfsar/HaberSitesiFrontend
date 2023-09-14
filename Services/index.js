@@ -29,6 +29,6 @@ export const BaseService = async ({
     const result = await response.json();
     return result;
   } catch (err) {
-    return err;
+    return err.message;
   }
 };

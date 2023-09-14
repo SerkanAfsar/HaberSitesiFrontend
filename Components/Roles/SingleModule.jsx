@@ -10,7 +10,6 @@ export default function SingleModule({ item, setFormsList }) {
 
   const updateItem = useCallback((e, type) => {
     const permissionName = `Permission.${item.name}.${type}`;
-
     setFormsList((prev) => {
       const index = prev.findIndex((a) => a.name == item.name);
       let newArr = prev[index].permissions;
@@ -38,6 +37,11 @@ export default function SingleModule({ item, setFormsList }) {
       createRef.current.addEventListener("click", (e) =>
         updateItem(e, "Create")
       );
+
+      if (item?.permissions.indexOf(`Permission.${item.name}.Create`) > -1) {
+        createRef.current.checked = true;
+      }
+
       return () => {
         createRef?.current?.removeEventListener("click", (e) =>
           updateItem(e, "Create")
@@ -49,6 +53,9 @@ export default function SingleModule({ item, setFormsList }) {
   useEffect(() => {
     if (readRef && readRef.current) {
       readRef.current.addEventListener("click", (e) => updateItem(e, "Read"));
+      if (item?.permissions.indexOf(`Permission.${item.name}.Read`) > -1) {
+        readRef.current.checked = true;
+      }
       return () => {
         readRef?.current?.removeEventListener("click", (e) =>
           updateItem(e, "Read")
@@ -62,11 +69,14 @@ export default function SingleModule({ item, setFormsList }) {
       updateRef?.current?.addEventListener("click", (e) =>
         updateItem(e, "Update")
       );
-      // return () => {
-      //   updateRef.current.removeEventListener("click", (e) =>
-      //     updateItem(e, "Update")
-      //   );
-      // };
+      if (item?.permissions.indexOf(`Permission.${item.name}.Update`) > -1) {
+        updateRef.current.checked = true;
+      }
+      return () => {
+        updateRef?.current?.removeEventListener("click", (e) =>
+          updateItem(e, "Update")
+        );
+      };
     }
   }, [updateRef]);
 
@@ -75,6 +85,9 @@ export default function SingleModule({ item, setFormsList }) {
       deleteRef.current.addEventListener("click", (e) =>
         updateItem(e, "Delete")
       );
+      if (item?.permissions.indexOf(`Permission.${item.name}.Delete`) > -1) {
+        deleteRef.current.checked = true;
+      }
       return () => {
         deleteRef?.current?.removeEventListener("click", (e) =>
           updateItem(e, "Delete")

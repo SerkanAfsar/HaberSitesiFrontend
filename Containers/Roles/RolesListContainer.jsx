@@ -3,6 +3,7 @@ import Datatable from "@/Components/Datatable/Datatable";
 import { DeleteRoleService } from "@/Services";
 import { CrudTypes, ToastResult } from "@/Utils/helpers";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function RoleListContainer({ roleList }) {
   const router = useRouter();
@@ -10,6 +11,10 @@ export default function RoleListContainer({ roleList }) {
     RoleId: "RoleId",
     RoleName: "Rol Adı",
   };
+
+  useEffect(() => {
+    router.refresh();
+  }, [router]);
 
   const rolesData = roleList?.map((item, index) => ({
     id: item.roleId,

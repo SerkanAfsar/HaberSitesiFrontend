@@ -3,6 +3,15 @@ export async function CreateRoleService({ body }) {
   return await BaseService({ controllerName: "Roles", method: "Post", body });
 }
 
+export async function UpdateRoleService({ body, id }) {
+  return await BaseService({
+    controllerName: "Roles",
+    method: "PUT",
+    body,
+    id,
+  });
+}
+
 export async function GetAllRolesService() {
   const result = await BaseService({
     controllerName: "Roles",

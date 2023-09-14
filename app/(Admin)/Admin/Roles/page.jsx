@@ -3,13 +3,12 @@ import AdminInnerContent from "@/Components/AdminLayout/AdminContent/AdminInnerC
 import { GetAllRolesService } from "@/Services";
 import RoleListContainer from "@/Containers/Roles/RolesListContainer";
 
-export const dynamic = "force-dynamic";
-
 export default async function Roles() {
   const result = await GetAllRolesService();
   if (!result.success && result.statusCode == 400) {
     throw new Error(result?.errorList[0]);
   }
+
   return (
     <>
       <ContentHeading title="ROL LİSTESİ" />
@@ -19,3 +18,6 @@ export default async function Roles() {
     </>
   );
 }
+
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
