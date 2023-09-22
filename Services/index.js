@@ -11,10 +11,14 @@ export const BaseService = async ({
   id = null,
   body = null,
   controllerName = null,
+  absolutePath = false,
+  absolutePathUrl = null,
 }) => {
-  const apiUrl = `${process.env.API_URL}/${controllerName}${
-    id ? `/${id}` : ""
-  } `;
+  const apiUrl = absolutePath
+    ? `${process.env.API_URL}/${controllerName}/${absolutePathUrl}`
+    : `${process.env.API_URL}/${controllerName}${id ? `/${id}` : ""} `;
+
+  console.log(apiUrl);
 
   try {
     const response = await fetch(apiUrl, {

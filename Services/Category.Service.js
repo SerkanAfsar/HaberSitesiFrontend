@@ -1,7 +1,11 @@
 import { BaseService } from ".";
 
-export async function GetCategoryListService() {
-  return await BaseService({ controllerName: "Categories" });
+export async function GetCategoryListService({ sayfa, limit }) {
+  return await BaseService({
+    controllerName: "Categories",
+    absolutePath: true,
+    absolutePathUrl: `GetCategoriesByPagination/${sayfa}/${limit}`,
+  });
 }
 
 export async function GetCategoryByIdService({ id }) {
@@ -22,5 +26,12 @@ export async function UpdateSingleCategoryService({ body, id }) {
     id,
     body,
     method: "PUT",
+  });
+}
+export async function DeleteSingleCategoryService({ id }) {
+  return await BaseService({
+    controllerName: "Categories",
+    id,
+    method: "DELETE",
   });
 }

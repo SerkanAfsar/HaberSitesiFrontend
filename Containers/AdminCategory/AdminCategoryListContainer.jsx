@@ -1,38 +1,39 @@
 "use client";
 import Datatable from "@/Components/Datatable/Datatable";
-import { DeleteRoleService } from "@/Services";
+import { DeleteSingleCategoryService } from "@/Services";
 import { CrudTypes, ToastResult } from "@/Utils/helpers";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-export default function RoleListContainer({ roleList }) {
+export default function AdminCategoryListContainer({ result }) {
+  const categoryList = result?.entities;
   const router = useRouter();
   const headers = {
-    RoleId: "RoleId",
-    RoleName: "Rol Adı",
+    Id: "Id",
+    KategoriAdi: "Kategori Adı",
   };
 
   useEffect(() => {
     router.refresh();
   }, [router]);
 
-  const rolesData = roleList?.map((item, index) => ({
-    id: item.roleId,
-    RoleName: item.roleName,
+  const categoriesData = categoryList?.map((item, index) => ({
+    id: item.id,
+    categoryName: item.categoryName,
   }));
 
   const handleDelete = async ({ id }) => {
-    const result = await DeleteRoleService({ id });
+    const result = await DeleteSingleCategoryService({ id });
     ToastResult({ result, type: CrudTypes.DELETE });
     router.refresh();
   };
   return (
     <Datatable
       headers={headers}
-      data={rolesData}
+      data={categoriesData}
       handleDelete={handleDelete}
-      detailPageUrl={`/Admin/AddRole`}
-      total={rolesData.length || 0}
+      detailPageUrl={`/Admin/AddCategory`}
+      total={result.totalCount || 0}
     />
   );
 }

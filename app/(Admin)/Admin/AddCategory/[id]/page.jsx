@@ -1,6 +1,6 @@
 import ContentHeading from "@/Components/AdminLayout/AdminContent/ContentHeading";
 import AdminInnerContent from "@/Components/AdminLayout/AdminContent/AdminInnerContent";
-import AdminCategoryContainer from "@/Containers/AdminCategory";
+import AdminAddOrUpdateContainer from "@/Containers/AdminCategory/AdminAddOrUpdateContainer";
 import { notFound } from "next/navigation";
 import { GetCategoryByIdService } from "@/Services";
 import { CrudTypes } from "@/Utils/helpers";
@@ -25,7 +25,7 @@ export default async function UpdateCategory({ params }) {
     <>
       <ContentHeading title="HABER PORTAL KATEGORİ GÜNCELLE" />
       <AdminInnerContent>
-        <AdminCategoryContainer
+        <AdminAddOrUpdateContainer
           type={CrudTypes.UPDATE}
           formData={result.entity}
           id={params.id}

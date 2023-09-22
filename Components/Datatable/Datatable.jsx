@@ -1,13 +1,16 @@
+import Pagination from "../Pagination/Pagination";
 import DatatableItem from "./DatatableItem";
+import styles from "./Datatable.module.scss";
 
 export default function Datatable({
   headers,
   data,
   handleDelete,
   detailPageUrl,
+  total,
 }) {
   return (
-    <table className="table table-dark table-striped">
+    <table className={`table table-dark table-striped ${styles.table}`}>
       <thead>
         <tr>
           {Object.keys(headers)?.map((item, index) => (
@@ -27,6 +30,13 @@ export default function Datatable({
           />
         ))}
       </tbody>
+      <tfoot>
+        <tr>
+          <th colSpan={Object.keys(headers).length + 2}>
+            <Pagination total={total} />
+          </th>
+        </tr>
+      </tfoot>
     </table>
   );
 }

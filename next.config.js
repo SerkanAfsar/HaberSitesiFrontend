@@ -5,6 +5,7 @@ const nextConfig = {
   },
   env: {
     API_URL: process.env.API_URL,
+    LIMIT_SIZE: process.env.LIMIT_SIZE,
   },
   sassOptions: {
     includePaths: [

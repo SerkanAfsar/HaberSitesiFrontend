@@ -9,7 +9,7 @@ import {
 } from "@/Services";
 import { useRouter } from "next/navigation";
 
-export default function AdminCategoryContainer({
+export default function AdminAddOrUpdateContainer({
   formData,
   type = CrudTypes.CREATE,
   id = null,
