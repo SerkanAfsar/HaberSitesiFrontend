@@ -2,31 +2,58 @@
 import FormItemTypes from "@/Utils/FormItemTypes";
 import useUIFormBody from "@/Hooks/useUIFormBody";
 import Form from "@/Components/UI/Form";
+import { CrudTypes, ToastResult } from "@/Utils/helpers";
+import {
+  AddSingleCategoryService,
+  UpdateSingleCategoryService,
+} from "@/Services";
+import { useRouter } from "next/navigation";
 
-import { GetCategoryListService } from "@/Services";
-export default function AdminCategoryContainer({ formData }) {
+export default function AdminCategoryContainer({
+  formData,
+  type = CrudTypes.CREATE,
+  id = null,
+}) {
+  const router = useRouter();
   const { body, data } = useUIFormBody({
     categoryName: {
       name: "categoryName",
-      value: formData?.categoryName ? formData.categoryName : null,
+      value: formData?.categoryName ?? null,
       type: FormItemTypes.TEXT,
       title: "Kategori Adı Giriniz",
       placeholder: "Kategori Adı Giriniz",
     },
     seoTitle: {
       name: "seoTitle",
-      value: formData?.seoTitle ? formData.seoTitle : null,
+      value: formData?.seoTitle ?? null,
       type: FormItemTypes.TEXT,
       title: "Seo Title Giriniz",
       placeholder: "Seo Title Giriniz",
     },
-    seoDescription: {
+    seoDesctiption: {
       name: "seoDescription",
-      value: formData?.seoDescription ? formData.seoDescription : null,
+      value: formData?.seoDesctiption ?? null,
       type: FormItemTypes.TEXT,
       title: "Seo Description Giriniz",
       placeholder: "Seo Description Giriniz",
     },
   });
-  return <Form formElements={body} handleSubmit={null} />;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const result =
+      type == CrudTypes.CREATE
+        ? await AddSingleCategoryService({
+            body: data,
+          })
+        : await UpdateSingleCategoryService({
+            body: data,
+            id,
+          });
+    const toastResult = ToastResult({ result, type });
+    if (!toastResult) {
+      return;
+    }
+    return router.push("/Admin/Categories", undefined, { shallow: true });
+  };
+  return <Form formElements={body} handleSubmit={handleSubmit} />;
 }
