@@ -2,6 +2,7 @@ import FormItemTypes from "@/Utils/FormItemTypes";
 import { memo } from "react";
 import styles from "./index.module.scss";
 import InputText from "../InputText";
+import DropdownList from "../DropdownList/DropdownList";
 
 const Form = ({
   handleSubmit,
@@ -18,6 +19,8 @@ const Form = ({
         switch (formElements[key]["type"]) {
           case FormItemTypes.TEXT:
             return <InputText key={value} {...formElements[key]} />;
+          case FormItemTypes.MULTISELECT:
+            return <DropdownList key={value} {...formElements[key]} />;
           //   case InputConstants.TYPE_CONSTANTS.TEXTAREA:
           //     return <FormTextBox key={value} {...formElements[key]} />;
           //   case InputConstants.TYPE_CONSTANTS.DROPDOWN:

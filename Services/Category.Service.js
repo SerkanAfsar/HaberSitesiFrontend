@@ -7,6 +7,11 @@ export async function GetCategoryListService({ sayfa, limit }) {
     absolutePathUrl: `GetCategoriesByPagination/${sayfa}/${limit}`,
   });
 }
+export async function GetAllCategoriesService() {
+  return await BaseService({
+    controllerName: "Categories",
+  });
+}
 
 export async function GetCategoryByIdService({ id }) {
   return await BaseService({ controllerName: "Categories", id });

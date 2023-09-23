@@ -1,5 +1,7 @@
 export * from "./Category.Service";
 export * from "./Roles.Service";
+export * from "./CategorySource.Service";
+
 const https = require("https");
 const httpsAgent = new https.Agent({
   rejectUnauthorized: false,
@@ -17,8 +19,6 @@ export const BaseService = async ({
   const apiUrl = absolutePath
     ? `${process.env.API_URL}/${controllerName}/${absolutePathUrl}`
     : `${process.env.API_URL}/${controllerName}${id ? `/${id}` : ""} `;
-
-  console.log(apiUrl);
 
   try {
     const response = await fetch(apiUrl, {
