@@ -11,9 +11,9 @@ import AdminCategorySourceListContainer from "@/Containers/AdminCategorySource/A
 export default async function CategorySourceList({ searchParams }) {
   const [categorySourcesList, categoriesResult] = await Promise.all([
     GetCategorySourcesByPagination({
-      sayfa: 1,
+      sayfa: searchParams.sayfa || 1,
       limit: process.env.LIMIT_SIZE,
-      categoryId: null,
+      categoryId: searchParams.categoryId || null,
     }),
     GetAllCategoriesService(),
   ]);

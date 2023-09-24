@@ -9,9 +9,10 @@ const Pagination = ({ total }) => {
   const searchParams = useSearchParams();
   const pathName = usePathname();
 
-  const pageNumber = searchParams.sayfa
-    ? parseInt(searchParams.sayfa)
+  const pageNumber = searchParams.get("sayfa")
+    ? parseInt(searchParams.get("sayfa")) - 1
     : undefined;
+
   const pageCount = Math.ceil(
     parseInt(total) / parseInt(process.env.LIMIT_SIZE)
   );

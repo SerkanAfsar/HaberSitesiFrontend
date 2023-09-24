@@ -3,4 +3,5 @@
   display: block;
   background: $adminContentBgColor;
   height: calc(100% - $adminTopHeight);
+  position: relative;
 }
