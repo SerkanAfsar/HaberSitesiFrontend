@@ -1,6 +1,7 @@
 export * from "./Category.Service";
 export * from "./Roles.Service";
 export * from "./CategorySource.Service";
+export * from "./News.Service";
 
 const https = require("https");
 const httpsAgent = new https.Agent({
@@ -15,20 +16,26 @@ export const BaseService = async ({
   controllerName = null,
   absolutePath = false,
   absolutePathUrl = null,
+  isFormData = false,
 }) => {
   const apiUrl = absolutePath
     ? `${process.env.API_URL}/${controllerName}/${absolutePathUrl}`
     : `${process.env.API_URL}/${controllerName}${id ? `/${id}` : ""} `;
 
+  const headers = {
+    Authorization: `Bearer ${tokenKey}`,
+  };
+
+  if (!isFormData) {
+    headers["Content-Type"] = "application/json; charset=utf-8";
+  }
+
   try {
     const response = await fetch(apiUrl, {
       agent: httpsAgent,
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-        Authorization: `Bearer ${tokenKey}`,
-      },
+      headers,
       method: method || "GET",
-      body: body ? JSON.stringify(body) : null,
+      body: isFormData ? body : body ? JSON.stringify(body) : null,
     });
     const result = await response.json();
     return result;

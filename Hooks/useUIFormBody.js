@@ -7,6 +7,12 @@ export default function useUIFormBody(formElements) {
       case FormItemTypes.TEXTEDITOR: {
         return editor.getData();
       }
+      case FormItemTypes.TEXTEDITOR: {
+        return editor.getData();
+      }
+      case "file": {
+        return e.target.value;
+      }
       case FormItemTypes.DROPDOWNLIST: {
         return parseInt(e.target.value);
       }
@@ -84,5 +90,12 @@ export default function useUIFormBody(formElements) {
     });
   }, [body]);
 
-  return { body, data, setData, setBody, formDataState };
+  return {
+    body,
+    data,
+    formDataState,
+    setData,
+    setBody,
+    formDataState,
+  };
 }

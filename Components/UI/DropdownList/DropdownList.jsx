@@ -8,8 +8,8 @@ const animatedComponents = makeAnimated();
 const DropdownList = ({ title, name, ...props }) => {
   const ref = useRef({ label: title, value: 0 });
   useEffect(() => {
-    if (props.options.findIndex((a) => a.value == ref.current.value) == -1) {
-      props.options.splice(0, 0, ref.current);
+    if (props?.options?.findIndex((a) => a.value == ref.current.value) == -1) {
+      props?.options?.splice(0, 0, ref.current);
     }
   }, [props.options]);
 
