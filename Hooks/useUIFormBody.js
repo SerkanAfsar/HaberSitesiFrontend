@@ -11,7 +11,7 @@ export default function useUIFormBody(formElements) {
         return editor.getData();
       }
       case "file": {
-        return e.target.value;
+        return e.target.files[0];
       }
       case FormItemTypes.DROPDOWNLIST: {
         return parseInt(e.target.value);

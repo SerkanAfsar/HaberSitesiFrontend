@@ -6,6 +6,7 @@ import { CrudTypes, ToastResult, buildFormData } from "@/Utils/helpers";
 import { AddSingleNewsService, UpdateSingleNewsService } from "@/Services";
 import { useRouter } from "next/navigation";
 import { SourceTypes } from "@/Utils/SourceTypes";
+import { useState } from "react";
 
 export default function AdminAddOrUpdateNewsContainer({
   formData,
@@ -18,6 +19,8 @@ export default function AdminAddOrUpdateNewsContainer({
     value: item.id,
   }));
   const router = useRouter();
+  const [newsFile, setNewsFile] = useState(null);
+
   const {
     body: paramsBody,
     data,
@@ -25,7 +28,8 @@ export default function AdminAddOrUpdateNewsContainer({
   } = useUIFormBody({
     categoryId: {
       name: "categoryId",
-      value: formData?.categoryId ?? null,
+      value:
+        categoryValues.find((a) => a.value == formData?.categoryId) ?? null,
       type: FormItemTypes.MULTISELECT,
       title: "Kategori Seçiniz",
       placeholder: "Kategori Seçiniz",
@@ -33,7 +37,7 @@ export default function AdminAddOrUpdateNewsContainer({
     },
     newsSource: {
       name: "newsSource",
-      value: formData?.newsSource ?? null,
+      value: SourceTypes.find((a) => a.value == formData?.newsSource) ?? null,
       type: FormItemTypes.MULTISELECT,
       title: "Kaynak Tipi Seçiniz",
       placeholder: "Kaynak Tipi Seçiniz",
@@ -77,9 +81,12 @@ export default function AdminAddOrUpdateNewsContainer({
 
     newsPicture: {
       name: "newsPicture",
+      value: null,
       type: "file",
       title: "Resim Seçiniz",
       placeholder: "Resim Seçiniz",
+      accept: "image/*",
+      onChange: (e) => setNewsFile(e.target.files[0]),
     },
     sourceUrl: {
       name: "sourceUrl",
@@ -93,14 +100,17 @@ export default function AdminAddOrUpdateNewsContainer({
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(data);
-
     const newData = {
       ...data,
       categoryId: data.categoryId.value,
       newsSource: data.newsSource.value,
+      newsPicture: newsFile,
     };
+    console.log(newData);
     const formData = new FormData();
+    if (type == CrudTypes.UPDATE) {
+      formData.append("id", id);
+    }
 
     buildFormData(formData, newData);
 
@@ -110,7 +120,7 @@ export default function AdminAddOrUpdateNewsContainer({
             body: formData,
           })
         : await UpdateSingleNewsService({
-            body,
+            body: formData,
             id,
           });
     const toastResult = ToastResult({ result, type });

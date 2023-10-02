@@ -1,10 +1,12 @@
 import { BaseService } from ".";
 
-export async function GetNewsListService({ sayfa, limit }) {
+export async function GetNewsListService({ sayfa, limit, categoryId = null }) {
   return await BaseService({
     controllerName: "News",
     absolutePath: true,
-    absolutePathUrl: `GetNewsByPagination/${sayfa}/${limit}`,
+    absolutePathUrl: `GetNewsByPagination/${sayfa}/${limit}${
+      categoryId ? `/${categoryId}` : ""
+    }`,
   });
 }
 export async function GetAllNewsService() {
@@ -32,6 +34,7 @@ export async function UpdateSingleNewsService({ body, id }) {
     id,
     body,
     method: "PUT",
+    isFormData: true,
   });
 }
 export async function DeleteSingleNewsService({ id }) {
