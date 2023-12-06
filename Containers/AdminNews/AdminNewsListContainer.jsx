@@ -19,8 +19,6 @@ export default function AdminNewsListContainer({ result, categoriesResult }) {
     Kategorisi: "Kategori Adi",
   };
 
-  console.log(result);
-
   const categoriesList = categoriesResult?.entities?.map((item) => ({
     label: item.categoryName,
     value: item.id,

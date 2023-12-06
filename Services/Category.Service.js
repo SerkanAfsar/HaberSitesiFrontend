@@ -40,3 +40,19 @@ export async function DeleteSingleCategoryService({ id }) {
     method: "DELETE",
   });
 }
+
+export async function UpCategoryService({ id }) {
+  return await BaseService({
+    controllerName: "Categories",
+    absolutePath: true,
+    absolutePathUrl: `UpCategory/${id}`,
+  });
+}
+
+export async function DownCategoryService({ id }) {
+  return await BaseService({
+    controllerName: "Categories",
+    absolutePath: true,
+    absolutePathUrl: `DownCategory/${id}`,
+  });
+}
