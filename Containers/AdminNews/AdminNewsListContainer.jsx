@@ -4,19 +4,25 @@ import DropdownList from "@/Components/UI/DropdownList/DropdownList";
 import {
   DeleteSingleCategorySourceService,
   DeleteSingleNewsService,
+  SaveAllToDbNewsService,
 } from "@/Services";
 import { CrudTypes, ToastResult } from "@/Utils/helpers";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import LoadingButton from "@/Components/UI/LoadingButton";
 
 export default function AdminNewsListContainer({ result, categoriesResult }) {
   const router = useRouter();
   const pathName = usePathname();
   const searchParams = useSearchParams();
+  const [loading, setLoading] = useState(false);
+
   const headers = {
     Id: "Id",
     HaberBaslik: "Haber Başlık",
     Kategorisi: "Kategori Adi",
+    Resim: "Resim",
   };
 
   const categoriesList = categoriesResult?.entities?.map((item) => ({
@@ -32,6 +38,14 @@ export default function AdminNewsListContainer({ result, categoriesResult }) {
     id: item.id,
     haberBaslik: item?.newsTitle ?? null,
     kategorisi: item?.category?.categoryName ?? null,
+    resim: (
+      <Image
+        src={item.newsPictureSmall}
+        width={150}
+        height={80}
+        alt={item.haberBaslik}
+      />
+    ),
   }));
 
   const handleDelete = async ({ id }) => {
@@ -51,9 +65,29 @@ export default function AdminNewsListContainer({ result, categoriesResult }) {
     }
     return router.refresh();
   };
+  const handleClick = async (e) => {
+    setLoading(true);
+    e.preventDefault();
+    const result = await SaveAllToDbNewsService();
+
+    const toastResult = ToastResult({ result, type: CrudTypes.UPDATE });
+    setLoading(false);
+    if (!toastResult) {
+      return;
+    }
+
+    return router.refresh();
+  };
 
   return (
     <>
+      <LoadingButton
+        text={"Haberleri Yükle"}
+        onClick={async (e) => await handleClick(e)}
+        isLoading={loading}
+        customLoadingText={"Haberler Yükleniyor"}
+      />
+
       <DropdownList
         title={"Kategori Seçiniz"}
         name={"drp_kategori"}

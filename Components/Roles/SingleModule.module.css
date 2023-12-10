@@ -1,0 +1,18 @@
+.roleItem {
+  border: 1px solid red;
+  padding: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  min-height: 150px;
+}
+.roleItem h3 {
+  display: block;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+}
+.roleItem__module-item {
+  display: flex;
+  margin: 5px 0px;
+  gap: 10px;
+}/*# sourceMappingURL=SingleModule.module.css.map */

@@ -10,11 +10,9 @@ export default async function AddNews() {
       case 404: {
         return notFound();
       }
-      // case 400: {
-      //   throw new Error(result?.errorList?.join("-") ?? result);
-      // }
+
       default: {
-        throw new Error(result?.errorList?.join("-") ?? result);
+        throw new Error(categories?.errorList?.join("-") ?? categories);
       }
     }
   }

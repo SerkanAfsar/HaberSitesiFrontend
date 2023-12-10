@@ -1,0 +1,9 @@
+.btnWrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.btnWrapper button {
+  display: inline-block;
+  justify-self: flex-end;
+}/*# sourceMappingURL=index.module.css.map */

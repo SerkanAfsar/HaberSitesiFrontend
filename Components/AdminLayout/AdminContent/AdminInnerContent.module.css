@@ -1,0 +1,11 @@
+.innerContent {
+  margin: 20px;
+  position: relative;
+  border-radius: 3px;
+  background: #fff;
+  margin-bottom: 20px;
+  display: block;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  min-height: calc(100% - 140px);
+}/*# sourceMappingURL=AdminInnerContent.module.css.map */

@@ -1,0 +1,13 @@
+.contentHeadingWrapper {
+  position: sticky;
+  position: -webkit-sticky;
+  padding: 17px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 15px 10px;
+  height: 50px;
+}/*# sourceMappingURL=ContentHeading.module.css.map */

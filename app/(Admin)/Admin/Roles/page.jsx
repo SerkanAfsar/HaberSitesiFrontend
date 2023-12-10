@@ -5,7 +5,7 @@ import RoleListContainer from "@/Containers/Roles/RolesListContainer";
 
 export default async function Roles() {
   const result = await GetAllRolesService();
-  if (!result.success && result.statusCode == 400) {
+  if (!result.success) {
     throw new Error(result?.errorList[0]);
   }
 

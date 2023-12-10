@@ -28,6 +28,15 @@ export async function AddSingleNewsService({ body }) {
   });
 }
 
+export async function SaveAllToDbNewsService() {
+  return await BaseService({
+    controllerName: "News",
+    method: "POST",
+    absolutePath: true,
+    absolutePathUrl: "SaveAllToDb",
+  });
+}
+
 export async function UpdateSingleNewsService({ body, id }) {
   return await BaseService({
     controllerName: "News",

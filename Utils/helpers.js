@@ -1,4 +1,6 @@
 import { toast } from "react-toastify";
+import jwt_decode from "jwt-decode";
+
 export function ToastResult({ result, type = CrudTypes.CREATE }) {
   if (!result.success) {
     if (result.errorList) {
@@ -61,3 +63,15 @@ export const buildFormData = (formData, data, parentKey) => {
     formData.append(parentKey, value);
   }
 };
+
+// export function returnDecodedToken({ jwtToken }) {
+//   if (jwtToken) {
+//     const decoded = jwt_decode(jwtToken);
+//     console.log(decoded);
+//     if (new Date(decoded?.exp * 1000) >= new Date()) {
+//       return decoded;
+//     }
+//     return null;
+//   }
+//   return null;
+// }

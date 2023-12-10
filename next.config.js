@@ -24,6 +24,10 @@ const nextConfig = {
         port: "",
         pathname: "/wp-content/**",
       },
+      {
+        protocol: "https",
+        hostname: "imagedelivery.net",
+      },
     ],
   },
 };

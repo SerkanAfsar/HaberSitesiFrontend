@@ -19,15 +19,19 @@ export default async function CategorySourceList({ searchParams }) {
   ]);
 
   if (!categorySourcesList.success) {
-    switch (result.statusCode) {
+    switch (categorySourcesList.statusCode) {
       case 404: {
         return notFound();
       }
       case 400: {
-        throw new Error(categorySourcesList?.errorList?.join("-") ?? result);
+        throw new Error(
+          categorySourcesList?.errorList?.join("-") ?? categorySourcesList
+        );
       }
       default: {
-        throw new Error(categorySourcesList?.errorList?.join("-") ?? result);
+        throw new Error(
+          categorySourcesList?.errorList?.join("-") ?? categorySourcesList
+        );
       }
     }
   }

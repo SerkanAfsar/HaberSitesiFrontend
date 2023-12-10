@@ -1,5 +1,11 @@
 "use client";
-
-export default function Error(error, reset) {
-  return <div>{error.Error}</div>;
+import ContentHeading from "@/Components/AdminLayout/AdminContent/ContentHeading";
+import AdminInnerContent from "@/Components/AdminLayout/AdminContent/AdminInnerContent";
+export default function Error({ error }) {
+  return (
+    <>
+      <ContentHeading title="HABER PORTAL" />
+      <AdminInnerContent>{error.message}</AdminInnerContent>
+    </>
+  );
 }

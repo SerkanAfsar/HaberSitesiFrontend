@@ -106,7 +106,7 @@ export default function AdminAddOrUpdateNewsContainer({
       newsSource: data.newsSource.value,
       newsPicture: newsFile,
     };
-    console.log(newData);
+
     const formData = new FormData();
     if (type == CrudTypes.UPDATE) {
       formData.append("id", id);

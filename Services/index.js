@@ -1,12 +1,23 @@
+import { getCookie } from "cookies-next";
 export * from "./Category.Service";
 export * from "./Roles.Service";
 export * from "./CategorySource.Service";
 export * from "./News.Service";
+export * from "./Login.Service";
 
 const https = require("https");
 const httpsAgent = new https.Agent({
   rejectUnauthorized: false,
 });
+
+function getCustomCookie(cookieName) {
+  let cookie = {};
+  document.cookie.split(";").forEach(function (el) {
+    let [key, value] = el.split("=");
+    cookie[key.trim()] = value;
+  });
+  return cookie[cookieName];
+}
 
 export const BaseService = async ({
   tokenKey = null,

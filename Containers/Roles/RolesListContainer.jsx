@@ -32,7 +32,7 @@ export default function RoleListContainer({ roleList }) {
       data={rolesData}
       handleDelete={handleDelete}
       detailPageUrl={`/Admin/AddRole`}
-      total={rolesData.length || 0}
+      total={rolesData?.length || 0}
     />
   );
 }
