@@ -6,16 +6,18 @@ import { GetCategoryByIdService } from "@/Services";
 import { CrudTypes } from "@/Utils/helpers";
 
 export default async function UpdateCategory({ params }) {
-  const result = await GetCategoryByIdService({ id: params.id });
+  const result = await GetCategoryByIdService({
+    id: params.id,
+  });
 
   if (!result.success) {
     switch (result.statusCode) {
       case 404: {
         return notFound();
       }
-      // case 400: {
-      //   throw new Error(result?.errorList?.join("-") ?? result);
-      // }
+      case 400: {
+        throw new Error(result?.errorList?.join("-") ?? result);
+      }
       default: {
         throw new Error(result?.errorList?.join("-") ?? result);
       }

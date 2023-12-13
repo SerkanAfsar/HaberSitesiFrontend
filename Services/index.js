@@ -1,9 +1,9 @@
-import { getCookie } from "cookies-next";
 export * from "./Category.Service";
 export * from "./Roles.Service";
 export * from "./CategorySource.Service";
 export * from "./News.Service";
 export * from "./Login.Service";
+import GetCookieByName from "@/Hooks/useGetCookie";
 
 const https = require("https");
 const httpsAgent = new https.Agent({
@@ -29,12 +29,16 @@ export const BaseService = async ({
   absolutePathUrl = null,
   isFormData = false,
 }) => {
+  const nextCookieName = await GetCookieByName({
+    cookieName: process.env.NEXT_PUBLIC_COOKIE_NAME,
+  });
+
   const apiUrl = absolutePath
     ? `${process.env.API_URL}/${controllerName}/${absolutePathUrl}`
     : `${process.env.API_URL}/${controllerName}${id ? `/${id}` : ""} `;
 
   const headers = {
-    Authorization: `Bearer ${tokenKey}`,
+    Authorization: `Bearer ${tokenKey || nextCookieName}`,
   };
 
   if (!isFormData) {
